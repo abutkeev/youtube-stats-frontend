@@ -9,7 +9,7 @@ import { AppHeader } from './Header'
 export default props => {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-    console.log(prefersDarkMode)
+    // console.log(prefersDarkMode)
     const theme = React.useMemo(
         () =>
             createMuiTheme({

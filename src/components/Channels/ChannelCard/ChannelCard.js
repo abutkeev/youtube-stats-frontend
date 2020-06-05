@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Avatar from '@material-ui/core/Avatar';
@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) =>
 
 export default (props) => {
     const classes = useStyles();
-    const { id, title, description, customUrl, publishedAt, statistics, thumbnails } = props
+    // const { id, title, description, customUrl, publishedAt, statistics, thumbnails } = props
+    const { id, title, statistics, thumbnails } = props
     const avatar_url = thumbnails.medium.url
 
     return (

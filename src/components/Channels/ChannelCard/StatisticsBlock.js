@@ -1,6 +1,5 @@
 import React from 'react';
 import Box from '@material-ui/core/Box';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
 import PeopleIcon from '@material-ui/icons/People';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import YouTubeIcon from '@material-ui/icons/YouTube';
