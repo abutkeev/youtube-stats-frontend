@@ -2,7 +2,8 @@ import React from 'react';
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Grid } from '@material-ui/core';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
 import { AppHeader } from './Header'
 
@@ -23,14 +24,10 @@ export default props => {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <Grid container direction='column' spacing={1}>
-                <Grid item>
-                    <AppHeader />
-                </Grid>
-                <Grid item container>
-                    {props.children}
-                </Grid>
-            </Grid>
-        </ThemeProvider>
+            <AppHeader />
+            <Box m={1}>
+                {props.children}
+            </Box>
+        </ThemeProvider >
     )
 }

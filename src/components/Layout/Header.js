@@ -6,13 +6,14 @@ import Typography from '@material-ui/core/Typography'
 export const AppHeader = () => {
     return (
         <React.Fragment>
-            <AppBar position='static'>
+            <AppBar position='fixed'>
                 <Toolbar>
                     <Typography variant='h5'>
                         Header
                     </Typography>
                 </Toolbar>
             </AppBar>
+            <Toolbar/>
         </React.Fragment>
     )
 }
