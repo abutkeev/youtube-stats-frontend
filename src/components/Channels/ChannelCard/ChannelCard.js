@@ -26,20 +26,20 @@ export default (props) => {
 
     return (
         <Box p={1} bgcolor='background.paper' flexWrap='nowrap' display='flex'>
-                    <Box m={1}>
-                        <Avatar src={avatar_url} className={classes.large} />
-                    </Box>
-                    <Box>
-                        <Typography variant='h6'>
-                            {title}
-                            <Tooltip title={<ChannelTooltip {...props}/>}>
-                                <InfoIcon />
-                            </Tooltip>
-                        </Typography>
-                        <StatisticsBlock {...props.statistics} />
-                        <Button>Статистика</Button>
-                        <Button>Видео</Button>
-                    </Box>
+            <Box m={1}>
+                <Avatar src={avatar_url} className={classes.large} />
+            </Box>
+            <Box>
+                <Typography variant='h6'>
+                    {title}
+                    <Tooltip title={<ChannelTooltip {...props} />}>
+                        <InfoIcon />
+                    </Tooltip>
+                </Typography>
+                <StatisticsBlock {...props.statistics} />
+                <Button>Статистика</Button>
+                <Button>Видео</Button>
+            </Box>
         </Box>
     );
 }
