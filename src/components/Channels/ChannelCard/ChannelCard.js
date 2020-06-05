@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Box from '@material-ui/core/Box';
 import Avatar from '@material-ui/core/Avatar';
@@ -37,8 +38,8 @@ export default (props) => {
                     </Tooltip>
                 </Typography>
                 <StatisticsBlock {...props.statistics} />
-                <Button>Статистика</Button>
-                <Button>Видео</Button>
+                <Button component={RouterLink} to={'/channel/' + id + '/stats'}>Статистика</Button>
+                <Button component={RouterLink} to={'/channel/' + id + '/videos'}>Видео</Button>
             </Box>
         </Box>
     );
