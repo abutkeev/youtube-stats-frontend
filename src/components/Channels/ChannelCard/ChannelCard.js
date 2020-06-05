@@ -38,7 +38,7 @@ export default (props) => {
                         <InfoIcon />
                     </Tooltip>
                 </Typography>
-                <StatisticsBlock {...props.statistics} />
+                <StatisticsBlock {...statistics} />
                 <Button component={RouterLink} to={'/channel/' + id + '/stats'}>Статистика</Button>
                 <Button component={RouterLink} to={'/channel/' + id + '/videos'}>Видео</Button>
             </Box>
