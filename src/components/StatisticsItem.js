@@ -1,30 +1,18 @@
 import React from 'react';
-import Button from '@material-ui/core/Button'
+import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
 import NumberFormat from 'react-number-format'
 
-const useStyles = makeStyles((theme) =>
-    createStyles({
-        button: {
-            paddingTop: 0,
-            paddingBottom: 0,
-            "&:hover": {
-                backgroundColor: "transparent"
-            }
-        }
- }),
-);
-
 function StatisticsItem(props) {
-    const classes = useStyles();
     return (
-        <Button className={classes.button} startIcon={<props.icon />} disableElevation disableFocusRipple disableRipple component='div'>
-                <Typography>
-                    <NumberFormat value={props.value} thousandSeparator='&nbsp;' displayType='text' />
-                </Typography>
-
-        </Button>
+        <Box display='flex' flexWrap='nowrap' mr={2}>
+            <Box mr={1}>
+                <props.icon />
+            </Box>
+            <Typography>
+                <NumberFormat value={props.value} thousandSeparator='&nbsp;' displayType='text' />
+            </Typography>
+        </Box>
     )
 }
 

@@ -29,7 +29,7 @@ class Channels extends React.Component {
                 }
                 <Grid container item xs={12}>
                     <Grid item xs={false} sm={1} md={false}/>
-                    <Grid container item xs={12} sm={10} spacing={1}>
+                    <Grid container item xs={12} sm={10} md={12} lg={10} spacing={1}>
                         {
                             this.state.channels.map((channel) => (
                                 <Grid item key={channel.id} xs={12} md={6}>
@@ -39,7 +39,6 @@ class Channels extends React.Component {
                             )
                         }
                     </Grid>
-                    <Grid item xs={false} sm={1} md={false}/>
                 </Grid>
 
             </Grid>
