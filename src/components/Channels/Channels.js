@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid, LinearProgress } from '@material-ui/core'
 
-import Api from '../api/Api'
+import Api from '../../api/Api'
 import ChannelCard from './ChannelCard/ChannelCard'
 
 class Channels extends React.Component {

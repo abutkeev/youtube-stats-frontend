@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route, Switch } from 'react-router';
 
-import Layout from './Layout/Layout';
-import Channels from './Channels/Channels';
+import Layout from './components/Layout/Layout';
+import Channels from './components/Channels/Channels';
 
 function App() {
   return (
