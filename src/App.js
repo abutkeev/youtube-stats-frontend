@@ -4,6 +4,8 @@ import { Route, Switch } from 'react-router';
 
 import Layout from './components/Layout/Layout';
 import Channels from './components/Channels/Channels';
+import Channel from './components/Channel/Channel';
+
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
         <Switch>
           <Route path='/' component={Channels} exact />
           <Route path='/channels' component={Channels} />
+          <Route path='/channel/:id/' component={Channel} />
         </Switch>
       </Layout>
     </HashRouter>

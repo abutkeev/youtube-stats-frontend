@@ -11,10 +11,13 @@
     "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-lines-ellipsis": "^0.14.1",
     "react-number-format": "^4.4.1",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "react-time-format": "^0.0.5",
+    "underscore": "^1.10.2"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",

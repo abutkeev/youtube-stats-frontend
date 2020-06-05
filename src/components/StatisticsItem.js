@@ -5,11 +5,11 @@ import NumberFormat from 'react-number-format'
 
 function StatisticsItem(props) {
     return (
-        <Box display='flex' flexWrap='nowrap' mr={2}>
-            <Box mr={1}>
-                <props.icon />
+        <Box display='flex' flexWrap='nowrap' mr={1.5}>
+            <Box mr={0.5}>
+                <props.icon fontSize='small'/>
             </Box>
-            <Typography>
+            <Typography variant='body2'>
                 <NumberFormat value={props.value} thousandSeparator='&nbsp;' displayType='text' />
             </Typography>
         </Box>
