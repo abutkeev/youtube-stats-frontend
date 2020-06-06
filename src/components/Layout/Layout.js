@@ -4,12 +4,11 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Box from '@material-ui/core/Box';
 
-import { AppHeader } from './Header'
+import AppHeader from './Header';
 
 export default props => {
     const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
 
-    // console.log(prefersDarkMode)
     const theme = React.useMemo(
         () =>
             createMuiTheme({
