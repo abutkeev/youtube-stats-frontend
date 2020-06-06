@@ -1,8 +1,8 @@
-import React from 'react'
-import { Grid, LinearProgress } from '@material-ui/core'
+import React from 'react';
+import Grid from '@material-ui/core/Grid'
 
-import Api from '../../api'
-import ChannelCard from './ChannelCard/ChannelCard'
+import Api from '../../api';
+import ChannelCard from '../ChannelCard';
 
 class Channels extends React.Component {
     state = {
@@ -19,14 +19,8 @@ class Channels extends React.Component {
 
     render() {
         return (
+            this.state.loading ? null :
             <Grid container spacing={1}>
-                {
-                    this.state.loading ?
-                        <Grid item xs={12}>
-                            <LinearProgress color='secondary' />
-                        </Grid>
-                        : null
-                }
                 <Grid container item xs={12}>
                     <Grid item xs={false} sm={1} md={false}/>
                     <Grid container item xs={12} sm={10} md={12} lg={10} spacing={1}>
