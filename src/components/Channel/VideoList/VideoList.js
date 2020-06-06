@@ -30,7 +30,7 @@ class VideoList extends React.Component {
             <Grid container spacing={1}>
                 {
                     this.state.videos.map((video) => (
-                        <Grid key={video.id} item xs={3}>
+                        <Grid key={video.id} item xs={12} sm={6} md={4} lg={3}>
                             <VideoCard {...video}/>
                         </Grid>
                     ))

@@ -19,7 +19,7 @@ class Channel extends React.Component {
         const { path } = this.props.match
         return (
             <React.Fragment>
-                <Box bgcolor='background.paper' flexWrap='nowrap' display='flex' p={2}>
+                <Box bgcolor='background.paper' flexWrap='nowrap' display='flex' p={1} m={1} borderRadius={5}>
                     Channel ID: {this.state.id}
                 </Box>
                 <Switch>
