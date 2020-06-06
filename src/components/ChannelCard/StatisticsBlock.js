@@ -4,7 +4,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 
-import StatisticsItem from '../../StatisticsItem';
+import StatisticsItem from '../StatisticsItem';
 
 function StatisticsBlock(props) {
     const { subscriberCount, videoCount, viewCount } = props

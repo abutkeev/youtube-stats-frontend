@@ -2,12 +2,24 @@ import React from 'react';
 import { Route, Switch } from 'react-router';
 import _ from 'underscore';
 import Box from '@material-ui/core/Box';
+import Api from '../../api'
 
 import VideoList from './VideoList/VideoList';
+import ChannelCard from '../ChannelCard';
 
 class Channel extends React.Component {
     state = {
-        id: this.props.match.params.id
+        id: this.props.match.params.id,
+        loading: true,
+        info: {},
+    }
+
+    async componentDidMount() {
+        const response = await Api.call('channel/' + this.state.id)
+        this.setState({
+            loading: false,
+            info: response,
+        })
     }
 
     shouldComponentUpdate(nextProp, nextState) {
@@ -15,12 +27,12 @@ class Channel extends React.Component {
     }
 
     render() {
-        // console.log(this.props)
         const { path } = this.props.match
         return (
+            this.state.loading ? null:
             <React.Fragment>
                 <Box bgcolor='background.paper' flexWrap='nowrap' display='flex' p={1} m={1} borderRadius={5}>
-                    Channel ID: {this.state.id}
+                    <ChannelCard {...this.state.info}/>
                 </Box>
                 <Switch>
                     <Route path={path + 'videos'} component={VideoList} />

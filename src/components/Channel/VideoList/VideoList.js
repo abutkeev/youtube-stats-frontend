@@ -2,7 +2,7 @@ import React from 'react';
 import _ from 'underscore';
 import Grid from '@material-ui/core/Grid';
 
-import Api from '../../../api/Api';
+import Api from '../../../api';
 import VideoCard from './VideoCard/VideoCard'
 
 class VideoList extends React.Component {
@@ -27,6 +27,7 @@ class VideoList extends React.Component {
     render() {
         // console.log(this.props)
         return (
+            this.state.loading ? null:
             <Grid container spacing={1}>
                 {
                     this.state.videos.map((video) => (
