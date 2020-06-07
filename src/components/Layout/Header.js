@@ -7,14 +7,50 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 
+import ee, { EventTypes } from '../../events/eventEmitter';
+
 class AppHeader extends React.Component {
     state = {
-        title: 'Home page',
+        title: '',
+        title_prefix: '',
+    }
+
+    listeners = {}
+
+    set_title(title) {
+        this.setState({ title })
+    }
+
+    set_title_prefix(title_prefix) {
+        this.setState({ title_prefix })
+    }
+
+    componentDidMount() {
+        const title_listener = this.set_title.bind(this)
+        ee.on(EventTypes.SET_TITLE, title_listener)
+        this.listeners[EventTypes.SET_TITLE] = title_listener
+
+        const title_prefix_listener = this.set_title_prefix.bind(this)
+        ee.on(EventTypes.SET_TITLE_PREFIX, title_prefix_listener)
+        this.listeners[EventTypes.SET_TITLE_PREFIX] = title_prefix_listener
+    }
+
+    componentWillUnmount() {
+        this.listeners.forEach((listener, key) => ee.removeListener(key, listener))
     }
 
     render() {
-        const title = this.state.title
+        const prefix = this.state.title_prefix ? this.state.title_prefix : ''
         const isHomePage = this.props.location.pathname === '/'
+        let title = this.state.title ? this.state.title : ''
+
+        if (prefix !== '') {
+            if (title === '') {
+                title = prefix + ': неизвестная страница'
+            } else {
+                title = prefix + ': ' + title.toLocaleLowerCase()
+            }
+        }
         document.title = title
         return (
             <React.Fragment>

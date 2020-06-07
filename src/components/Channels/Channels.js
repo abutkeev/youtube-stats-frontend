@@ -1,6 +1,7 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid'
 
+import ee, {EventTypes} from '../../events/eventEmitter';
 import Api from '../../api';
 import ChannelCard from '../ChannelCard';
 
@@ -11,10 +12,15 @@ class Channels extends React.Component {
     }
 
     async componentDidMount() {
+        ee.emit(EventTypes.SET_TITLE, 'Список видео')
         this.setState({
             loading: false,
             channels: Object.values(await Api.call('channels'))
         })
+    }
+
+    componentWillUnmount() {
+        ee.emit(EventTypes.SET_TITLE, '')
     }
 
     render() {

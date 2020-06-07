@@ -4,6 +4,7 @@ import _ from 'underscore';
 import Box from '@material-ui/core/Box';
 import Api from '../../api'
 
+import ee, { EventTypes } from '../../events/eventEmitter';
 import VideoList from './VideoList/VideoList';
 import ChannelCard from '../ChannelCard';
 
@@ -15,11 +16,40 @@ class Channel extends React.Component {
     }
 
     async componentDidMount() {
+        if (this.props.match.isExact) {
+            ee.emit(EventTypes.SET_TITLE, 'Канал')
+            ee.emit(EventTypes.SET_TITLE_PREFIX, '')
+        } else {
+            ee.emit(EventTypes.SET_TITLE_PREFIX, '')
+        }
         const response = await Api.call('channel/' + this.state.id)
         this.setState({
             loading: false,
             info: response,
         })
+    }
+
+    componentDidUpdate() {
+        if (this.state.loading) {
+            if (this.props.match.isExact) {
+                ee.emit(EventTypes.SET_TITLE, 'Канал')
+                ee.emit(EventTypes.SET_TITLE_PREFIX, '')
+            } else {
+                ee.emit(EventTypes.SET_TITLE_PREFIX, '')
+            }
+        } else {
+            if (this.props.match.isExact) {
+                ee.emit(EventTypes.SET_TITLE, this.state.info.title)
+                ee.emit(EventTypes.SET_TITLE_PREFIX, '')
+            } else {
+                ee.emit(EventTypes.SET_TITLE_PREFIX, this.state.info.title  )
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        ee.emit(EventTypes.SET_TITLE, '')
+        ee.emit(EventTypes.SET_TITLE_PREFIX, '')
     }
 
     shouldComponentUpdate(nextProp, nextState) {
@@ -29,15 +59,15 @@ class Channel extends React.Component {
     render() {
         const { path } = this.props.match
         return (
-            this.state.loading ? null:
-            <React.Fragment>
-                <Box bgcolor='background.paper' flexWrap='nowrap' display='flex' p={1} m={1} borderRadius={5}>
-                    <ChannelCard {...this.state.info}/>
-                </Box>
-                <Switch>
-                    <Route path={path + 'videos'} component={VideoList} />
-                </Switch>
-            </React.Fragment>
+            this.state.loading ? null :
+                <React.Fragment>
+                    <Box bgcolor='background.paper' flexWrap='nowrap' display='flex' p={1} m={1} borderRadius={5}>
+                        <ChannelCard {...this.state.info} />
+                    </Box>
+                    <Switch>
+                        <Route path={path + 'videos'} component={VideoList} />
+                    </Switch>
+                </React.Fragment>
         )
     }
 }
