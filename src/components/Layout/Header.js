@@ -17,22 +17,19 @@ class AppHeader extends React.Component {
 
     listeners = {}
 
-    set_title(title) {
-        this.setState({ title })
+    set_state(key, value) {
+        this.setState(Object.fromEntries([[key, value]]))
     }
 
-    set_title_prefix(title_prefix) {
-        this.setState({ title_prefix })
+    add_state_listener(event, key) {
+        const listener = this.set_state.bind(this, key)
+        ee.on(event, listener)
+        this.listeners[event] = listener
     }
 
     componentDidMount() {
-        const title_listener = this.set_title.bind(this)
-        ee.on(EventTypes.SET_TITLE, title_listener)
-        this.listeners[EventTypes.SET_TITLE] = title_listener
-
-        const title_prefix_listener = this.set_title_prefix.bind(this)
-        ee.on(EventTypes.SET_TITLE_PREFIX, title_prefix_listener)
-        this.listeners[EventTypes.SET_TITLE_PREFIX] = title_prefix_listener
+        this.add_state_listener(EventTypes.SET_TITLE, 'title')
+        this.add_state_listener(EventTypes.SET_TITLE_PREFIX, 'title_prefix')
     }
 
     componentWillUnmount() {
