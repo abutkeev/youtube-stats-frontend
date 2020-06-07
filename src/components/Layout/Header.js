@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 import { Link as RouterLink } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -6,14 +7,16 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 
-export default class AppHeader extends React.Component {
+import TitleContext from '../../contexts/Title';
+
+class AppHeader extends React.Component {
     state = {
         title: 'Home page',
     }
 
     render() {
         const title = this.state.title
-        const isHomePage = false
+        const isHomePage = this.props.location.pathname === '/'
         document.title = title
         return (
             <React.Fragment>
@@ -22,7 +25,7 @@ export default class AppHeader extends React.Component {
                         <IconButton disabled={isHomePage} edge='start' component={RouterLink} to='/'><HomeIcon /></IconButton>
                         <Typography variant='h5'>
                             {title}
-                    </Typography>
+                        </Typography>
                     </Toolbar>
                 </AppBar>
                 <Toolbar />
@@ -30,3 +33,5 @@ export default class AppHeader extends React.Component {
         )
     }
 }
+
+export default withRouter(AppHeader)
