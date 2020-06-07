@@ -7,8 +7,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 
-import TitleContext from '../../contexts/Title';
-
 class AppHeader extends React.Component {
     state = {
         title: 'Home page',
