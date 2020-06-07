@@ -1,9 +1,12 @@
 import axios from 'axios'
 
+import ee, { EventTypes } from '../events/eventEmitter';
+
 export default {
     async call(method) {
         const url = 'https://abutkeev.ru/youtube-stats/backend/' + method
         try {
+            ee.emit(EventTypes.SET_API_CALLED, true)
             var response = await axios.get(url)
 
             if (!('result' in response.data)) {
@@ -21,6 +24,8 @@ export default {
             return response.data.data
         } catch (e) {
             console.log('exception in api call', e)
+        } finally {
+            ee.emit(EventTypes.SET_API_CALLED, false)
         }
     }
 }

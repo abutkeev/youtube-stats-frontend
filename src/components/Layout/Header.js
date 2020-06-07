@@ -4,6 +4,8 @@ import { Link as RouterLink } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import LinearProgress from '@material-ui/core/LinearProgress';
+import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import HomeIcon from '@material-ui/icons/Home';
 
@@ -13,6 +15,7 @@ class AppHeader extends React.Component {
     state = {
         title: '',
         title_prefix: '',
+        api_called: false,
     }
 
     listeners = {}
@@ -30,6 +33,7 @@ class AppHeader extends React.Component {
     componentDidMount() {
         this.add_state_listener(EventTypes.SET_TITLE, 'title')
         this.add_state_listener(EventTypes.SET_TITLE_PREFIX, 'title_prefix')
+        this.add_state_listener(EventTypes.SET_API_CALLED, 'api_called')
     }
 
     componentWillUnmount() {
@@ -59,6 +63,13 @@ class AppHeader extends React.Component {
                         </Typography>
                     </Toolbar>
                 </AppBar>
+                {
+                    this.state.api_called ?
+                        <Box zIndex='modal' position='fixed' width='100%'>
+                            <LinearProgress color='secondary'/>
+                        </Box>
+                        : null
+                }
                 <Toolbar />
             </React.Fragment>
         )

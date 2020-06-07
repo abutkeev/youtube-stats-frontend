@@ -1,2 +1,3 @@
 export const SET_TITLE = 'SET_TITLE'
 export const SET_TITLE_PREFIX = 'SET_TITLE_PREFIX'
+export const SET_API_CALLED = 'SET_API_CALLED'
