@@ -12,7 +12,7 @@ class Channels extends React.Component {
     }
 
     async componentDidMount() {
-        ee.emit(EventTypes.SET_TITLE, 'Список видео')
+        ee.emit(EventTypes.SET_TITLE, 'Список каналов')
         this.setState({
             loading: false,
             channels: Object.values(await Api.call('channels'))
