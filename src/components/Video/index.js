@@ -6,6 +6,7 @@ import Api from '../../api'
 
 import ee, { EventTypes } from '../../events/eventEmitter';
 import VideoHeader from './VideoHeader';
+import Stats from './Stats';
 
 class Video extends React.Component {
     state = {
@@ -64,7 +65,7 @@ class Video extends React.Component {
                         <VideoHeader {...this.state.info} />
                     </Box>
                     <Switch>
-                        {/* <Route path={path + 'stats'} component={Stats} /> */}
+                        <Route path={path + 'stats'} component={Stats} />
                     </Switch>
                 </React.Fragment>
         )

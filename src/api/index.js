@@ -20,7 +20,7 @@ export default {
                 throw new Error('no data in response')
             }
 
-            console.log(response.data)
+            // console.log(response.data)
             return response.data.data
         } catch (e) {
             console.log('exception in api call', e)

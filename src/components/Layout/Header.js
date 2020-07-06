@@ -37,7 +37,10 @@ class AppHeader extends React.Component {
     }
 
     componentWillUnmount() {
-        this.listeners.forEach((listener, key) => ee.removeListener(key, listener))
+        console.log('listeners', this.listeners)
+        if (this.listeners) {
+            this.listeners.forEach((listener, key) => ee.removeListener(key, listener))
+        }
     }
 
     render() {
@@ -66,7 +69,7 @@ class AppHeader extends React.Component {
                 {
                     this.state.api_called ?
                         <Box zIndex='modal' position='fixed' width='100%'>
-                            <LinearProgress color='secondary'/>
+                            <LinearProgress color='secondary' />
                         </Box>
                         : null
                 }

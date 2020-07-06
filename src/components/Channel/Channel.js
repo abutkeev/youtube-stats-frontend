@@ -7,6 +7,7 @@ import Api from '../../api'
 import ee, { EventTypes } from '../../events/eventEmitter';
 import VideoList from './VideoList/VideoList';
 import ChannelCard from '../ChannelCard';
+import Stats from './Stats';
 
 class Channel extends React.Component {
     state = {
@@ -66,6 +67,7 @@ class Channel extends React.Component {
                     </Box>
                     <Switch>
                         <Route path={path + 'videos'} component={VideoList} />
+                        <Route path={path + 'stats'} component={Stats} />
                     </Switch>
                 </React.Fragment>
         )
